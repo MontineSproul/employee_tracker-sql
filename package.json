@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "directories": {
-    "test": "tests",
-    "start": "node server.js"
+    "test": "tests"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
     "mysql2": "^3.2.0"
   },
   "keywords": [],
-  "description": "",
   "devDependencies": {
     "jest": "^29.5.0"
-  }
+  },
+  "description": ""
 }

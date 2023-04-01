@@ -11,7 +11,7 @@ VALUES
 ('Alice', 'Johnson', 5),
 ('Lary', 'Power', 2);
 
-INSERT INTO department (department_name) 
+INSERT INTO department (name) 
 VALUES 
 ('Sales'),
 ('Management'),
@@ -26,8 +26,8 @@ VALUES
 ('Sr Developer', 125000.00, 4),
 ('Sr Developer', 125000.00, 3),
 ('Sr Developer', 125000.00, 5),
-('Jr Developer' 85000.00, 4),
-('Sr Developer' 125000.00, 4),
+('Jr Developer', 85000.00, 4),
+('Sr Developer', 125000.00, 4),
 ('Jr Developer', 85000.00, 3),
 ('Jr Developer', 85000.00, 5),
 ('Sales Rep', 90000.00, 1);

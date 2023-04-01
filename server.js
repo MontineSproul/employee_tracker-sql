@@ -20,7 +20,7 @@ const db = mysql.createConnection(
     console.log('Connected to the employee database.')
 );
 
-con.connect(err => {
+db.connect(err => {
     if(err)throw err
     employeeStart();
   });
@@ -46,22 +46,22 @@ con.connect(err => {
         case "All Departments":
           DepartmentsAll();
           break;
-        case 'Add Department':
+        case 'Add New Department':
             addNewDepartment();
             break;
         case 'All Roles':
           RolesAll();
           break;
-        case 'Add Role':
+        case 'Add New Role':
           addNewRole ();
           break;
         case 'All Employees':
           EmployeesAll();
           break;
-        case 'Add Employee':
+        case 'Add New Employee':
           addNewEmployee();
           break;
-        case 'Update Employee':
+        case 'Update Current Employee':
           updateCurrentEmployee();
           break;
       }
@@ -70,7 +70,7 @@ con.connect(err => {
   };
   //All Departments
   const DepartmentsAll = () => {
-    con.query(
+    db.query(
       `SELECT department.name, department.id FROM department;`,
       function (err, res){
         if(err) throw err;
@@ -93,7 +93,7 @@ con.connect(err => {
     .then((input) => {
       const inputs = input.name;
       const add = `INSERT INTO department (name) VALUES (?)`;
-      con.query(add, inputs, (err, res) => { 
+      db.query(add, inputs, (err, res) => { 
         if(err) throw err;
         return input;});
     })
@@ -102,8 +102,8 @@ con.connect(err => {
   
   //ALL Roles 
   const RolesAll = () => {
-    con.query(
-      `SELECT roles.id, roles.title, roles.salary, roles.department_id FROM roles;`,
+    db.query(
+      `SELECT role.id, role.title, role.salary, role.department_id FROM role;`,
       function (err, res){
         if(err) throw err;
         console.table(res);
@@ -133,8 +133,8 @@ con.connect(err => {
    ])
    .then ((input)=> {
     const roleInfo = [input.title, input.salary, input.department_id];
-    const add = `INSERT INTO roles (title, salary, department_id) VALUES (?,?,?)`;
-    con.query(add, roleInfo, (err, res) => {
+    const add = `INSERT INTO role (title, salary, department_id) VALUES (?,?,?)`;
+    db.query(add, roleInfo, (err, res) => {
       if (err) throw err;
       return input
     });
@@ -146,7 +146,7 @@ con.connect(err => {
   
   // All Employees
   const EmployeesAll = () =>{
-    con.query( 
+    db.query( 
       `SELECT employee.id, employee.first_name, employee.last_name, employee.role_id FROM employee`,
       function (err, res){
         if (err) throw err;
@@ -185,7 +185,7 @@ con.connect(err => {
     .then((input)=>{
       const employeeInfo = [ input.first_name, input.last_name, input.role_id, input.manager_id,];
       const add = `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)`;
-      con.query (add, employeeInfo, (err, res)=> {
+      db.query (add, employeeInfo, (err, res)=> {
         if (err) throw err;
         return input;
       });
@@ -213,7 +213,7 @@ con.connect(err => {
       .then ((input)=> {
         const updateCurrentEmployee=[ input.role_id, input.id];
         const add = `UPDATE employee SET role_id = ? WHERE id = ?`;
-        con.query(add, updateCurrentEmployee, (err, res)=>{
+        db.query(add, updateCurrentEmployee, (err, res)=>{
           if (err) throw err;
           return input;
         })

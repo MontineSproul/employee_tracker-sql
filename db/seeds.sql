@@ -1,12 +1,33 @@
-INSERT INTO employees (first_name, last_name, job_title, department, salary)
+INSERT INTO employee (first_name, last_name, role_id)
 VALUES
-('Ronald', 'Fairbank', 'Mangager', 'Sales', 125 ),
-('Virginia', 'Wolfe', 'Team Lead', 'Sales', 100),
-('Piers', 'Gaveston', 'Sale Person', 'Sales', 95),
-('Charles', 'LeRoi', 'Sr Software Engineer', 'Tech', 100),
-('Katherine', 'Smith', 'Sr Software Engineer', 'Tech', 100 ),
-('Montague', 'Lawrence', 'Jr Software Engineer', 'Tech', 65 ),
-('Octavia', 'Spencer', 'Jr Software Engineer', 'Tech', 65 ),
-('Edward', 'Cullen', 'Social Media', 'Advertising', 70 ),
-('Alice', 'Johnson', 'Customer Service', 'Inbound Sales', 55),
-('Lary', 'Power', 'Receptionist', 'All', 45);
+('Ronald', 'Fairbank', 1),
+('Virginia', 'Wolfe', 4),
+('Piers', 'Gaveston', 4),
+('Charles', 'LeRoi', 2),
+('Katherine', 'Smith', 2 ),
+('Montague', 'Lawrence', 1 ),
+('Octavia', 'Spencer', 3 ),
+('Edward', 'Cullen', 3 ),
+('Alice', 'Johnson', 5),
+('Lary', 'Power', 2);
+
+INSERT INTO department (department_name) 
+VALUES 
+('Sales'),
+('Management'),
+('Frontend'),
+('Backend'),
+('Design');
+
+INSERT INTO role (title, salary, department_id)
+VALUES
+('Frontend Manager', 170000.00, 3),
+('Backend Manager', 180000.00, 4),
+('Sr Developer', 125000.00, 4),
+('Sr Developer', 125000.00, 3),
+('Sr Developer', 125000.00, 5),
+('Jr Developer' 85000.00, 4),
+('Sr Developer' 125000.00, 4),
+('Jr Developer', 85000.00, 3),
+('Jr Developer', 85000.00, 5),
+('Sales Rep', 90000.00, 1);

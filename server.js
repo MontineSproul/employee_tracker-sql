@@ -12,7 +12,6 @@ const consoleTable = require('console.table');
 const db = mysql.createConnection(
     {
         host: 'localhost',
-        port: 3306,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
@@ -23,7 +22,7 @@ const db = mysql.createConnection(
 db.connect(err => {
     if(err)throw err
     employeeStart();
-  });
+  })
      // START
   const employeeStart = (data) => {
     inquirer
@@ -71,7 +70,7 @@ db.connect(err => {
   //All Departments
   const DepartmentsAll = () => {
     db.query(
-      `SELECT department.name, department.id FROM department;`,
+      `SELECT name, id FROM department;`,
       function (err, res){
         if(err) throw err;
         console.table(res);

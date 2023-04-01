@@ -1,4 +1,4 @@
-require('.env').config();
+require('dotenv').config();
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
@@ -12,9 +12,10 @@ const consoleTable = require('console.table');
 const db = mysql.createConnection(
     {
         host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'employee_tracker'
+        port: 3306,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE,
     },
     console.log('Connected to the employee database.')
 );
